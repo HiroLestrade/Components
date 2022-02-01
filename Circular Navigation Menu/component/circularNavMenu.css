@@ -1,0 +1,71 @@
+/* Menu is relative for the absolutes li */
+.menu{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* transition-delay may vary with --i, so goes from 0s for --i = 0 to 0.7s for --i = 7.
+    --i = 7 is the last one to start the translate.
+    the translateX adjust the buttons to the center of the toggle and the rotate 0
+    establishes a start angle for the active rotation.*/
+.menu li{
+    position: absolute;
+    left: 0;
+    list-style: none;
+    transform-origin: 100px;
+    transition: 0.5s;
+    transition-delay: calc(0.1s * var(--i));
+    transform: rotate(0deg) translateX(80px);
+}
+
+/* By the transform-origin, rotates each button according its --i position, canceling
+    the 80px translateX of the non active state. */
+.menu.active li{
+    transform: rotate(calc(360deg / 8 * var(--i)));
+}
+
+/* transform adjust de rotation of the icon inside each button.*/
+.menu li a{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    transform: rotate(calc(360deg / -8 * var(--i)));
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    color: #111;
+    transition: 0.5s;
+}
+
+/* the transform maintains the rotation adjust for the icons. */
+.menu li a:hover{
+    transform: scale(120%) rotate(calc(360deg / -8 * var(--i)));;
+    color: #ff1252;
+    transition: 0.25s;
+}
+
+.toggle{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 8;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    font-size: 2em;
+    transition: transform 1.25s;
+}
+
+.menu.active .toggle{
+    transform: rotate(315deg);
+}
