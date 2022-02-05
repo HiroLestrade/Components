@@ -1,0 +1,113 @@
+/*
+    selector{
+        //box model
+        //position
+        //display
+        //color
+        //font
+        //transition
+        //animation
+    }
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    background: var(--background);
+}
+
+:root{
+    --background: #2f3640;
+    --secondary: rgb(0,0,0,0);
+    --primary: #dcdde1;
+    --glass: #7f8fa6;
+}
+
+.menu{
+    margin: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 10px;
+
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--secondary);
+    outline: var(--glass) 2px solid;
+    
+    transition: all 0.5s;
+}
+
+.menu a{
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--primary);
+    
+    font-size: 0rem;
+    
+    transform: translate(calc(0.8rem * var(--x)), calc(0.8rem * var(--y)));
+    
+    transition: width 0.5s calc(0.1s * var(--i)),
+                height 0.5s calc(0.1s * var(--i)),
+                background 0.5s calc(0.1s * var(--i)),
+                box-shadow 0.3s 0s,
+                font-size 0.5s calc(0.1s * var(--i)),
+                transform 0.5s calc(0.1s * var(--i));
+}
+
+.menu.active{
+    margin: 0;
+    width: 12rem;
+    height: 12rem;
+    
+    outline: 0;
+    box-shadow: 0 0 10px var(--glass),
+                inset 0 0 5px var(--glass);
+
+    transform: translate(-3.5rem, -3.5rem);
+}
+
+.menu.active a{
+    width: 2.5rem;
+    height: 2.5rem;
+    
+    background: var(--background);
+
+    font-size: 1.5rem;
+
+    transform: translate(calc(3rem * var(--x)), calc(3rem * var(--y)));
+}
+
+.menu a:link, .menu a:visited,
+.menu.active a:link, .menu.active a:visited{
+    color: var(--glass);
+
+    text-decoration: none;
+}
+
+.menu.active a:hover{
+    box-shadow: 0 0 10px var(--glass),
+                inset 0 0 10px var(--glass);
+}
