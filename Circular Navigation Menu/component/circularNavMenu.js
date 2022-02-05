@@ -19,7 +19,7 @@ function circularNavMenu(){
     toggleIcon.setAttribute("name", `${icons[0]}-outline`);
     toggle.appendChild(toggleIcon);
     
-    /* How to toogle anithing */
+    /* how to toogle anithing */
     toggle.onclick = () => {
         menu.classList.toggle("active");
     }
